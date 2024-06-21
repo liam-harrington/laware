@@ -4,7 +4,7 @@ def leave():
     from sys import exit
     exit()
 
-def inputSource():
+def input_source():
     external = input('Input: ') # for sample data
     if external == 'stop':
         leave()
@@ -14,19 +14,17 @@ class Exist():
     
     ons = list()
 
-    def begin(self, introduced):
+    def __init__(self, introduced):
         self.alive = True
         self.aware = Aware(self)
 
         self.introduced = introduced
 
-        self.source(inputSource)
+        self.source(input_source)
 
         from threading import Thread
         self.persisting = Thread(target=self.persist)
         self.persisting.start()
-        
-        return self
 
     def source(self, method): # asin to source something
         self.ons.append(method)
